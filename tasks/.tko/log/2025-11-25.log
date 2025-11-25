@@ -60,3 +60,7 @@
 2025-11-25 18:09:31, EXEC, v:1, k:poo@contato, mode:FULL, rate:80, size:88
 2025-11-25 18:10:15, EXEC, v:1, k:poo@contato, mode:FULL, rate:100, size:90
 2025-11-25 18:10:21, MOVE, v:1, k:poo@contato, mode:BACK
+2025-11-25 18:19:52, MOVE, v:1, k:poo@agenda, mode:DOWN
+2025-11-25 18:26:33, MOVE, v:1, k:poo@agenda, mode:PICK
+2025-11-25 18:26:34, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0, size:82
+2025-11-25 18:26:34, MOVE, v:1, k:poo@agenda, mode:BACK
