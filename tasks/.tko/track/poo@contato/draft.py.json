@@ -7,8 +7,18 @@
         },
         {
             "label": "2025-11-25_14-24-19",
-            "content": "class Fone:\n    def __init__(self, id:  str, number: str):\n        self.id = id\n        self.number = number\n\n    def isValid(self) -> bool:\n        if not self.id or not self.number:\n            print(\"fail: invalid number\")\n            return  False\n        return True\n    \n    def getId(self):\n        return self.id\n    \n    def getNumber(self):\n        return self.number\n    \n    def __str__(self):\n        return f\"{self.id}:{self.number}\"",
+            "content": "@@ -444,459 +444,4 @@\n er%7D%22\n-%0A    %0Aclass Contact:%0A    def __init__(self, name: str):%0A        self.name = name%0A        self.fone: list%5BFone%5D %7C None = None%0A        self.favorited: bool = False%0A%0A    def addFone(self, id: str, number: str):%0A        self.fone.append(id, number)%0A%0A    def getFone(self):%0A        return self.fone%0A    %0A    def getName(self):%0A        return self.name%0A    %0A    def setName(self, name: str):%0A        self.name = name%0A%0A    def rmFone(self, index: int):%0A        %0A\n",
             "lines": "19"
+        },
+        {
+            "label": "2025-11-25_14-46-02",
+            "content": "@@ -898,365 +898,5 @@\n     \n-self.fone.pop(index)%0A%0A    def toggleFav(self):%0A        if self.favorited == False:%0A            self.favorited = True%0A            return%0A        if self.favorited == True:%0A            self.favorited = False%0A            return%0A        %0A    def isFav(self) -%3E bool:%0A        if self.favorited == True:%0A            return True%0A        else:%0A            return False\n %0A\n",
+            "lines": "40"
+        },
+        {
+            "label": "2025-11-25_14-50-40",
+            "content": "class Fone:\n    def __init__(self, id:  str, number: str):\n        self.id = id\n        self.number = number\n\n    def isValid(self) -> bool:\n        if not self.id or not self.number:\n            print(\"fail: invalid number\")\n            return  False\n        return True\n    \n    def getId(self):\n        return self.id\n    \n    def getNumber(self):\n        return self.number\n    \n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.name = name\n        self.fone: list[Fone] | None = None\n        self.favorited: bool = False\n\n    def addFone(self, id: str, number: str):\n        self.fone.append(id, number)\n\n    def getFone(self):\n        return self.fone\n    \n    def getName(self):\n        return self.name\n    \n    def setName(self, name: str):\n        self.name = name\n\n    def rmFone(self, index: int):\n        self.fone.pop(index)\n\n    def toggleFav(self):\n        if self.favorited == False:\n            self.favorited = True\n            return\n        if self.favorited == True:\n            self.favorited = False\n            return\n        \n    def isFav(self) -> bool:\n        if self.favorited == True:\n            return True\n        else:\n            return False\n",
+            "lines": "54"
         }
     ]
 }
