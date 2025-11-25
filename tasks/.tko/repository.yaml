@@ -12,22 +12,14 @@ sources:
   type: clone
   branch: master
   cache_path: ''
-<<<<<<< HEAD
-  cache_timestamp: '2025-11-25 14:16:10'
-=======
-  cache_timestamp: '2025-11-25 14:31:45'
->>>>>>> e3487346b666d532226f18511b185c8bf324eb0e
+  cache_timestamp: '2025-11-25 17:56:11'
   filters:
   - crud
 expanded:
 - poo@campanha-principal
 - poo@bloco_d-crud-com-mapas-e-enumerações
-<<<<<<< HEAD
 tasks:
-  poo@contato: '{rate:60}'
-=======
-tasks: {}
->>>>>>> e3487346b666d532226f18511b185c8bf324eb0e
+  poo@contato: '{rate:100}'
 flags:
   quests: 0
   tracks: 0

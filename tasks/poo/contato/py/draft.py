@@ -6,6 +6,8 @@ class Fone:
     def isValid(self) -> bool:
         if not self.id or not self.number:
             return False
+        if any(c.isalpha() for c in self.number):
+            return False
         return True
     
     def getId(self):
@@ -25,8 +27,11 @@ class Contact:
 
     def addFone(self, id: str, number: str):
         fone = Fone(id, number)
-        if fone.isValid():
-            self.fone.append(fone)
+        if not fone.isValid():
+            print("fail: invalid number")
+            return
+        self.fone.append(fone)
+        
 
     def rmFone(self, index: int):
         self.fone.pop(index)
@@ -80,4 +85,6 @@ def main():
         elif args[0] == "rm":
             index = int(args[1])
             contatos.rmFone(index)
+        elif args[0] == "tfav":
+            contatos.toggleFav()
 main()
