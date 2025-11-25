@@ -1,0 +1,14 @@
+{
+    "patches": [
+        {
+            "label": "2025-11-25_13-27-05",
+            "content": "@@ -111,337 +111,4 @@\n     \n-def isValid(self) -%3E bool:%0A        if not self.id or not self.number:%0A            print(%22fail: invalid number%22)%0A            return  False%0A        return True%0A    %0A    def getId(self):%0A        return self.id%0A    %0A    def getNumber(self):%0A        return self.number%0A    %0A    def __str__(self):%0A        return f%22%7Bself.id%7D:%7Bself.number%7D%22\n",
+            "lines": "6"
+        },
+        {
+            "label": "2025-11-25_14-24-19",
+            "content": "class Fone:\n    def __init__(self, id:  str, number: str):\n        self.id = id\n        self.number = number\n\n    def isValid(self) -> bool:\n        if not self.id or not self.number:\n            print(\"fail: invalid number\")\n            return  False\n        return True\n    \n    def getId(self):\n        return self.id\n    \n    def getNumber(self):\n        return self.number\n    \n    def __str__(self):\n        return f\"{self.id}:{self.number}\"",
+            "lines": "19"
+        }
+    ]
+}
