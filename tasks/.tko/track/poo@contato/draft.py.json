@@ -1,6 +1,7 @@
 {
     "patches": [
         {
+<<<<<<< HEAD
             "label": "2025-11-25_14-26-31",
             "content": "@@ -561,1055 +561,4 @@\n     \n-def addFone(self, id: str, number: str):%0A        self.fone.append(id, number)%0A%0A    def rmFone(self, index: int):%0A        self.fone.pop(index)%0A%0A    def toggleFav(self):%0A        if self.fav == False:%0A            self.fav = True%0A            return%0A        else:%0A            self.fav = False%0A%0A    def isFav(self) -%3E bool:%0A        if self.fav == True:%0A            return True%0A        else:%0A            return False%0A        %0A    def getFones(self):%0A        return self.fone%0A    %0A    def getName(self):%0A        return self.name%0A    %0A    def setName(self, name: str):%0A        self.name = name%0A%0A    def __str__(self):%0A        fone = %22, %22.join(%5Bstr(x) for x in self.fone%5D)%0A        if self.fav == True:%0A            return f%22@ %7Bself.name%7D %5B%7Bfone%7D%5D%22%0A        else:%0A            return f%22- %7Bself.name%7D %5B%7Bfone%7D%5D%22%0A        %0Adef main():%0A    contatos = Contact%0A    while True:%0A        line = input()%0A        print(%22$%22 + line)%0A        args: list%5Bstr%5D = line.split()%0A        if args%5B0%5D == %22end%22:%0A            break%0A        elif args%5B0%5D == %22show%22:%0A            print(contatos)%0A\n",
             "lines": "26"
@@ -39,6 +40,26 @@
             "label": "2025-11-25_14-56-40",
             "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.id = id\n        self.number = number\n\n    def isValid(self) -> bool:\n        if not self.id or not self.number:\n            return False\n        return True\n    \n    def getId(self):\n        return self.id\n    \n    def getNumber(self):\n        return self.number\n    \n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.fone: list[Fone] = []\n        self.name = name\n        self.fav: bool = False\n\n    def addFone(self, id: str, number: str):\n        fone = Fone(id, number)\n        if fone.isValid():\n            self.fone.append(fone)\n\n    def rmFone(self, index: int):\n        self.fone.pop(index)\n\n    def toggleFav(self):\n        if self.fav == False:\n            self.fav = True\n            return\n        else:\n            self.fav = False\n\n    def isFav(self) -> bool:\n        if self.fav == True:\n            return True\n        else:\n            return False\n        \n    def getFones(self):\n        return self.fone\n    \n    def getName(self):\n        return self.name\n    \n    def setName(self, name: str):\n        self.name = name\n\n    def __str__(self):\n        fone = \", \".join([str(x) for x in self.fone])\n        if self.fav == True:\n            return f\"@ {self.name} [{fone}]\"\n        else:\n            return f\"- {self.name} [{fone}]\"\n        \ndef main():\n    contatos = Contact(\"\")\n    while True:\n        line = input()\n        print(\"$\" + line)\n        args: list[str] = line.split()\n        if args[0] == \"end\":\n            break\n        elif args[0] == \"show\":\n            print(contatos)\n        elif args[0] == \"init\":\n            name = args[1]\n            contatos.setName(name)\n        elif args[0] == \"add\":\n            id = args[1]\n            number = args[2]\n            contatos.addFone(id, number)\n        elif args[0] == \"rm\":\n            index = int(args[1])\n            contatos.rmFone(index)\nmain()\n",
             "lines": "83"
+=======
+            "label": "2025-11-25_13-27-05",
+            "content": "@@ -111,337 +111,4 @@\n     \n-def isValid(self) -%3E bool:%0A        if not self.id or not self.number:%0A            print(%22fail: invalid number%22)%0A            return  False%0A        return True%0A    %0A    def getId(self):%0A        return self.id%0A    %0A    def getNumber(self):%0A        return self.number%0A    %0A    def __str__(self):%0A        return f%22%7Bself.id%7D:%7Bself.number%7D%22\n",
+            "lines": "6"
+        },
+        {
+            "label": "2025-11-25_14-24-19",
+            "content": "@@ -444,459 +444,4 @@\n er%7D%22\n-%0A    %0Aclass Contact:%0A    def __init__(self, name: str):%0A        self.name = name%0A        self.fone: list%5BFone%5D %7C None = None%0A        self.favorited: bool = False%0A%0A    def addFone(self, id: str, number: str):%0A        self.fone.append(id, number)%0A%0A    def getFone(self):%0A        return self.fone%0A    %0A    def getName(self):%0A        return self.name%0A    %0A    def setName(self, name: str):%0A        self.name = name%0A%0A    def rmFone(self, index: int):%0A        %0A\n",
+            "lines": "19"
+        },
+        {
+            "label": "2025-11-25_14-46-02",
+            "content": "@@ -898,365 +898,5 @@\n     \n-self.fone.pop(index)%0A%0A    def toggleFav(self):%0A        if self.favorited == False:%0A            self.favorited = True%0A            return%0A        if self.favorited == True:%0A            self.favorited = False%0A            return%0A        %0A    def isFav(self) -%3E bool:%0A        if self.favorited == True:%0A            return True%0A        else:%0A            return False\n %0A\n",
+            "lines": "40"
+        },
+        {
+            "label": "2025-11-25_14-50-40",
+            "content": "class Fone:\n    def __init__(self, id:  str, number: str):\n        self.id = id\n        self.number = number\n\n    def isValid(self) -> bool:\n        if not self.id or not self.number:\n            print(\"fail: invalid number\")\n            return  False\n        return True\n    \n    def getId(self):\n        return self.id\n    \n    def getNumber(self):\n        return self.number\n    \n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.name = name\n        self.fone: list[Fone] | None = None\n        self.favorited: bool = False\n\n    def addFone(self, id: str, number: str):\n        self.fone.append(id, number)\n\n    def getFone(self):\n        return self.fone\n    \n    def getName(self):\n        return self.name\n    \n    def setName(self, name: str):\n        self.name = name\n\n    def rmFone(self, index: int):\n        self.fone.pop(index)\n\n    def toggleFav(self):\n        if self.favorited == False:\n            self.favorited = True\n            return\n        if self.favorited == True:\n            self.favorited = False\n            return\n        \n    def isFav(self) -> bool:\n        if self.favorited == True:\n            return True\n        else:\n            return False\n",
+            "lines": "54"
+>>>>>>> e3487346b666d532226f18511b185c8bf324eb0e
         }
     ]
 }
