@@ -73,6 +73,9 @@ class Agenda:
         contato = Contact(name, fone)
         self.contact.append(contato)
 
+    def getContato(self, name: str) -> Contact | None:
+        if 
+
 def main():
     agenda = Agenda()
     while True:

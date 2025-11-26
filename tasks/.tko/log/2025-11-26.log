@@ -28,3 +28,10 @@
 2025-11-26 13:21:12, EXEC, v:1, k:poo@contato, mode:FREE
 2025-11-26 13:21:34, EXEC, v:1, k:poo@contato, mode:FULL, rate:100
 2025-11-26 13:25:50, MOVE, v:1, k:poo@contato, mode:BACK
+2025-11-26 13:34:12, MOVE, v:1, k:poo@contato, mode:PICK
+2025-11-26 13:34:12, EXEC, v:1, k:poo@contato, mode:FREE, size:90
+2025-11-26 14:05:18, MOVE, v:1, k:poo@contato, mode:BACK
+2025-11-26 14:05:21, MOVE, v:1, k:poo@agenda, mode:PICK
+2025-11-26 14:05:21, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0, size:89
+2025-11-26 14:05:21, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0, size:89
+2025-11-26 14:05:22, MOVE, v:1, k:poo@agenda, mode:BACK

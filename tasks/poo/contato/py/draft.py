@@ -21,7 +21,7 @@ class Fone:
     
 class Contact:
     def __init__(self, name: str, fone: list[Fone] = []):
-        self.fone= fone
+        self.fone = fone
         self.name = name
         self.fav: bool = False
 
