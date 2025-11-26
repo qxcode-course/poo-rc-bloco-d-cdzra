@@ -20,8 +20,8 @@ class Fone:
         return f"{self.id}:{self.number}"
     
 class Contact:
-    def __init__(self, name: str):
-        self.fone: list[Fone] = []
+    def __init__(self, name: str, fone: list[Fone] = []):
+        self.fone = fone
         self.name = name
         self.fav: bool = False
 
@@ -68,6 +68,10 @@ class Contact:
 class Agenda:
     def __init__(self, contacts: list[Contact]):
         self.contact = contacts
+
+    def addContato(self, name: str, fone: list[Fone]):
+        contato = Contact(name, fone)
+        self.contact.append(contato)
 
 def main():
     agenda = Agenda()

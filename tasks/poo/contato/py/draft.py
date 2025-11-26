@@ -20,8 +20,8 @@ class Fone:
         return f"{self.id}:{self.number}"
     
 class Contact:
-    def __init__(self, name: str):
-        self.fone: list[Fone] = []
+    def __init__(self, name: str, fone: list[Fone] = []):
+        self.fone= fone
         self.name = name
         self.fav: bool = False
 
