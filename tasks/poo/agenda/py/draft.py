@@ -20,8 +20,8 @@ class Fone:
         return f"{self.id}:{self.number}"
     
 class Contact:
-    def __init__(self, name: str, fone: list[Fone] = []):
-        self.fone = fone
+    def __init__(self, name: str):
+        self.fone: list[Fone] = []
         self.name = name
         self.fav: bool = False
 
@@ -74,8 +74,8 @@ class Contact:
             return f"- {self.name} [{fone}]"
         
 class Agenda:
-    def __init__(self, contacts: list[Contact] = []):
-        self.contact = contacts
+    def __init__(self):
+        self.contact: list[Contact] = []
 
     def findPosByName(self, name: str) -> int:
         for i, c in enumerate(self.contact):
@@ -102,17 +102,23 @@ class Agenda:
             return
         self.contact.pop(pos)
 
+    def getContact(self, name: str):
+        pos = self.findPosByName(name)
+        if pos == -1:
+            return None
+        return self.contact[pos]
+
     def search(self, pattern: str) -> list[Contact]:
         result = []
         for c in self.contact:
             if c.matches(pattern):
                 result.append(c)
-        return result
+        return sorted(result, key=lambda x: x.getName())
     
     def getFavorited(self) -> list[Contact]:
-        return [c for c in self.contacts if c.isFav()]
+        return [c for c in self.contact if c.isFav()]
 
-    def getContact(self) -> list[Contact]:
+    def getContacts(self) -> list[Contact]:
         return self.contact
     
     def __str__(self):
@@ -124,9 +130,45 @@ def main():
     while True:
         line = input()
         print("$" + line)
-        args: list[str] = line.split()
+        args = line.split()
         if args[0] == "end":
             break
         elif args[0] == "show":
             print(agenda)
+        elif args[0] == "add":
+            name = args[1]
+            fone = []
+            for token in args[2:]:
+                try:
+                    id, number = token.split(":")
+                    fone.append(Fone(id, number))
+                except:
+                    print("fail: invalid fone format")
+            agenda.addContact(name, fone)
+        elif args[0] == "rm":
+            agenda.rmContact(args[1])
+        elif args[0] == "rmFone":
+            name = args[1]
+            index = int(args[2])
+            contact = agenda.getContact(name)
+            if contact is None:
+                print("fail: contact not found")
+            else:
+                contact.rmFone(index)
+        elif args[0] == "tfav":
+            name = args[1]
+            contact = agenda.getContact(name)
+            if contact is None:
+                print("fail: contact not found")
+            else:
+                contact.toggleFav()
+        elif args[0] == "favs":
+            for c in agenda.getFavorited():
+                print(c)
+        elif args[0] == "search":
+            pattern = args[1]
+            en = agenda.search(pattern)
+
+            for contato in en:
+                print(contato)
 main()
