@@ -58,6 +58,14 @@ class Contact:
     def setName(self, name: str):
         self.name = name
 
+    def matches(self, pattern: str) -> bool:
+        if pattern in self.name:
+            return True
+        for f in self.fone:
+            if pattern in f.id or pattern in f.number:
+                return True
+        return False
+
     def __str__(self):
         fone = ", ".join([str(x) for x in self.fone])
         if self.fav == True:
@@ -66,9 +74,51 @@ class Contact:
             return f"- {self.name} [{fone}]"
         
 class Agenda:
-    def __init__(self, contacts: list[Contact]):
+    def __init__(self, contacts: list[Contact] = []):
         self.contact = contacts
 
+    def findPosByName(self, name: str) -> int:
+        for i, c in enumerate(self.contact):
+            if c.getName() == name:
+                return i
+        return -1
+
+    def addContact(self, name: str, fones: list[Fone]):
+        pos = self.findPosByName(name)
+        if pos == -1:
+            contact = Contact(name)
+            for f in fones:
+                contact.addFone(f.id, f.number)
+            self.contact.append(contact)
+        else:
+            contact = self.contact[pos]
+            for f in fones:
+                contact.addFone(f.id, f.number)
+
+    def rmContact(self, name: str):
+        pos = self.findPosByName(name)
+        if pos == -1:
+            print("fail: contact not found")
+            return
+        self.contact.pop(pos)
+
+    def search(self, pattern: str) -> list[Contact]:
+        result = []
+        for c in self.contact:
+            if c.matches(pattern):
+                result.append(c)
+        return result
+    
+    def getFavorited(self) -> list[Contact]:
+        return [c for c in self.contacts if c.isFav()]
+
+    def getContact(self) -> list[Contact]:
+        return self.contact
+    
+    def __str__(self):
+        order = sorted(self.contact, key= lambda x:x.getName())
+        return "\n".join(str(contact) for contact in order)
+        
 def main():
     agenda = Agenda()
     while True:
